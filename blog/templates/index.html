@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   
+
+    <div class="container">
+  
+      {% if tag %}
+        <h2 class="mb-3">Posts tagged with <span class="badge badge-danger">{{ tag.name }}</span></h2>
+    {% endif %}
+	<div class="row justify-content-between">
+		<div class="col-md-8">
+        
+			<h5 class="font-weight-bold spanborder"><span class="color3">All Stories</span></h5>
+             {% for post in postdata.newposts.allPosts %}
+			<div class="row" style="margin-bottom:12px;">
+            <div class="col-md-4 pl-4">
+                <img src="/media/{{ post.image }}" class="rounded featured-image-list" alt="{{post.title}}">
+                </div>
+
+                <div class="col-md-8 pl-8">
+                    <h2 class="mb-1 h4 font-weight-bold">
+                    <span class="post_title"><a href="/post/{{post.postId}}/{{post.slug}}">
+                                {{ post.title }}
+                                </a></span>
+					</h2>
+                    <div class="card-text text-muted small"> 
+                        <span class="color5"><a href="/category/{{post.category.name}}" class="color5"><strong>{{post.category.name}}</strong></a>&nbsp;&middot;&nbsp;
+                        <small class="text-muted">{{ post.createdAgo }} &nbsp;&middot;&nbsp;{{ post.readTime }} min read</small>
+                        &nbsp;&middot;&nbsp; 
+                     <small class="text-muted">{{post.claps|floatformat:"0"}} claps </small>&nbsp;&middot;&nbsp; <small class="text-muted">{{post.views|floatformat:"0"}} views</small></span>
+                    </div>
+					<p>
+						{{ post.synopsis|safe|striptags}}
+					</p>
+            
+                    
+                </div>
+                
+                
+				{% comment %} <div class="col-lg-8 col-md-6 col-sm-3">
+					<h2 class="mb-1 h4 font-weight-bold">
+                    <span class="post_title"><a href="{{ post.get_absolute_url }}">
+                                {{ post.title }}
+                                </a></span>
+					</h2>
+					<p>
+						{{ post.body|safe|striptags|truncatechars:100 }}
+					</p>
+					<div class="card-text text-muted small"> {% endcomment %}
+						    {% comment %} {{post.author}} in  {% endcomment %}
+                            {% comment %} <span class="color5"><a href="/category/{{post.category}}" class="color5"><strong>{{post.category}}</strong></a></span>  {% endcomment %}
+                            
+					{% comment %} </div>
+					<small class="text-muted">{{ post.publish.date }} &middot; {{ post.read_time }} min read</small>
+				</div>
+                <div class="col-md-4 col-md-6 col-sm-3">
+                    <img height="140" width="250" src="{{ post.image.url }}" class="rounded featured-image-list" alt="{{post.title}}">
+                </div> {% endcomment %}
+                
+
+			</div>
+            {%endfor%}
+			
+		</div>
+        
+		<div class="col-md-4 pl-4">
+        
+            <h5 class="font-weight-bold spanborder"><span class="color3">Popular</span></h5>
+			<ol class="list-featured">
+   
+                {% for post in postdata.popularposts.allPosts %}
+         
+                <li>
+				<span>
+				<h6 class="font-weight-bold">
+                <span class="post_title">
+				<a href="/post/{{post.postId}}/{{post.slug}}">{{post.title}}</a>
+                </span>
+				</h6>
+				<p class="text-muted">
+					 {% comment %} {{post.author}} in  {% endcomment %}
+                     <span class="color5"><a href="/category/{{post.category.name}}" class="color5"><strong>{{post.category.name}}</strong></a>&nbsp;&middot;&nbsp;
+                     <small class="text-muted"> &nbsp;{{ post.readTime }} min read</small>&nbsp;&middot;&nbsp; 
+                     <small class="text-muted">{{post.claps|floatformat:"0"}} claps </small>&nbsp;&middot;&nbsp; <small class="text-muted">{{post.views|floatformat:"0"}} views</small></span>
+
+				</p>
+                <p>
+						{{ post.synopsis|safe|striptags|truncatechars:"80"}}
+					</p>
+				</span>
+				</li>
+
+                {%endfor%}
+				
+			</ol>
+		</div>
+	</div>
+</div>
+
+    {% include "pagination.html" with page=posts %}
+
+{% endblock content %}
+
+
+

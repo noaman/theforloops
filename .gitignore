@@ -1,0 +1,5 @@
+# .gitignore
+# Project files and directories
+
+__pycache__
+db/

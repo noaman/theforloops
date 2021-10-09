@@ -1,0 +1,179 @@
+
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+<div class="container">
+
+	<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row justify-content-between">
+				<div class="col-md-12 pt-6 pb-6 pr-6 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+						<a class="color5" href="/category/{{post.category.name}}">{{post.category.name}}</a>
+					</p>
+					<h1 class="display-4 secondfont mb-3 font-weight-bold">{{post.title}}</h1>
+					{% comment %} <p class="mb-3">
+						 Analysts told CNBC that the currency could hit anywhere between $1.35-$1.40 if the deal gets passed through the U.K. parliament.
+					</p> {% endcomment %}
+
+					<div class="d-flex align-items-center">
+						{% comment %} <img class="rounded-circle" src="assets/img/demo/avatar2.jpg" width="70"> {% endcomment %}
+						<small class="ml-2"><!--{{post.author}}--> <span class="text-muted d-block">A few hours ago &nbsp;&middot;&nbsp; {{post.readTime}} min. read 
+                 
+                        &nbsp;&middot;&nbsp;<span class="text-muted">{{post.views|floatformat:"0"}} views</span>
+						</small>
+					</div>
+				</div>
+                </div>
+                <div class="row justify-content-between">
+				<div class="col-md-10 pr-0">
+					<img width="100%" src="/media/{{ post.image }}">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container pt-4 pb-4">
+	<div class="row justify-content-center">
+		<div class="col-lg-1 pr-4 mb-4 col-md-12">
+			<div class="sticky-top text-center">
+				<div class="text-muted">
+					
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+            <button id="clap" class="clap">
+  <span>
+    <!--  SVG Created by Luis Durazo from the Noun Project  -->
+    <svg id="clap--icon" xmlns="http://www.w3.org/2000/svg" viewBox="-549 338 100.1 125">
+  <path d="M-471.2 366.8c1.2 1.1 1.9 2.6 2.3 4.1.4-.3.8-.5 1.2-.7 1-1.9.7-4.3-1-5.9-2-1.9-5.2-1.9-7.2.1l-.2.2c1.8.1 3.6.9 4.9 2.2zm-28.8 14c.4.9.7 1.9.8 3.1l16.5-16.9c.6-.6 1.4-1.1 2.1-1.5 1-1.9.7-4.4-.9-6-2-1.9-5.2-1.9-7.2.1l-15.5 15.9c2.3 2.2 3.1 3 4.2 5.3zm-38.9 39.7c-.1-8.9 3.2-17.2 9.4-23.6l18.6-19c.7-2 .5-4.1-.1-5.3-.8-1.8-1.3-2.3-3.6-4.5l-20.9 21.4c-10.6 10.8-11.2 27.6-2.3 39.3-.6-2.6-1-5.4-1.1-8.3z"/>
+  <path d="M-527.2 399.1l20.9-21.4c2.2 2.2 2.7 2.6 3.5 4.5.8 1.8 1 5.4-1.6 8l-11.8 12.2c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l34-35c1.9-2 5.2-2.1 7.2-.1 2 1.9 2 5.2.1 7.2l-24.7 25.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l28.5-29.3c2-2 5.2-2 7.1-.1 2 1.9 2 5.1.1 7.1l-28.5 29.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.4 1.7 0l24.7-25.3c1.9-2 5.1-2.1 7.1-.1 2 1.9 2 5.2.1 7.2l-24.7 25.3c-.5.5-.4 1.2 0 1.7.5.5 1.2.5 1.7 0l14.6-15c2-2 5.2-2 7.2-.1 2 2 2.1 5.2.1 7.2l-27.6 28.4c-11.6 11.9-30.6 12.2-42.5.6-12-11.7-12.2-30.8-.6-42.7m18.1-48.4l-.7 4.9-2.2-4.4m7.6.9l-3.7 3.4 1.2-4.8m5.5 4.7l-4.8 1.6 3.1-3.9"/>
+</svg>
+  </span>
+  <span id="clap--count" class="clap--count"></span>
+  <span id="clap--count-total" class="clap--count-total"></span>
+</button>
+					
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12 col-lg-8">
+			<article class="article-post">
+			{{post.post|safe}}
+
+            <p>
+        <strong>Tags:</strong>
+        {% for tag in post.tags %}
+            <a href="#" class="link-light text-decoration-none badge bg-danger">
+                {{tag}}
+            </a>
+            <!-- {% if not forloop.last %}, {% endif %} -->
+        {% endfor %}
+    </p>
+
+			</article>
+            <div class="sharethis-inline-share-buttons"></div>
+			{% comment %} <div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-5 mb-2 mb-md-0">
+						<h5 class="font-weight-bold secondfont">Become a member</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-7">
+						<div class="row">
+							<div class="col-md-12">
+								<input type="text" class="form-control" placeholder="Enter your e-mail address">
+							</div>
+							<div class="col-md-12 mt-2">
+								<button type="submit" class="btn btn-success btn-block">Subscribe</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> {% endcomment %}
+		</div>
+	</div>
+</div>
+    
+{% comment %} <div class="container pt-4 pb-4">
+	<h5 class="font-weight-bold spanborder"><span>Read next</span></h5>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="card border-0 mb-4 box-shadow h-xl-300">
+				<div style="background-image: url(./assets/img/demo/3.jpg); height: 150px; background-size: cover; background-repeat: no-repeat;">
+				</div>
+				<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+					<h2 class="h4 font-weight-bold">
+					<a class="text-dark" href="#">Brain Stimulation Relieves Depression Symptoms</a>
+					</h2>
+					<p class="card-text">
+						 Researchers have found an effective target in the brain for electrical stimulation to improve mood in people suffering from depression.
+					</p>
+					<div>
+						<small class="d-block"><a class="text-muted" href="./author.html">Favid Rick</a></small>
+						<small class="text-muted">Dec 12 · 5 min read</small>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="flex-md-row mb-4 box-shadow h-xl-300">
+				<div class="mb-3 d-flex align-items-center">
+					<img height="80" src="./assets/img/demo/blog4.jpg">
+					<div class="pl-3">
+						<h2 class="mb-2 h6 font-weight-bold">
+						<a class="text-dark" href="./article.html">Nasa's IceSat space laser makes height maps of Earth</a>
+						</h2>
+						<div class="card-text text-muted small">
+							 Jake Bittle in LOVE/HATE
+						</div>
+						<small class="text-muted">Dec 12 · 5 min read</small>
+					</div>
+				</div>
+				<div class="mb-3 d-flex align-items-center">
+					<img height="80" src="./assets/img/demo/blog5.jpg">
+					<div class="pl-3">
+						<h2 class="mb-2 h6 font-weight-bold">
+						<a class="text-dark" href="./article.html">Underwater museum brings hope to Lake Titicaca</a>
+						</h2>
+						<div class="card-text text-muted small">
+							 Jake Bittle in LOVE/HATE
+						</div>
+						<small class="text-muted">Dec 12 · 5 min read</small>
+					</div>
+				</div>
+				<div class="mb-3 d-flex align-items-center">
+					<img height="80" src="./assets/img/demo/blog6.jpg">
+					<div class="pl-3">
+						<h2 class="mb-2 h6 font-weight-bold">
+						<a class="text-dark" href="./article.html">Sun-skimming probe starts calling home</a>
+						</h2>
+						<div class="card-text text-muted small">
+							 Jake Bittle in LOVE/HATE
+						</div>
+						<small class="text-muted">Dec 12 · 5 min read</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> {% endcomment %}
+<!-- End Main -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mo-js/0.288.1/mo.min.js'></script>
+{% endblock content %}
+
+
+{%block scripts%}
+
+<script>
+
+
+setInitialNumberOfClaps({{post.postId}},{{post.claps}});
+
+</script>
+
+{%endblock%}
