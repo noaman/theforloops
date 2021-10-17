@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'theforloops.com',
     'www.theforloops.com',
-    '77.68.120.113',
+    '162.255.85.41',
 ]
 
 # ALLOWED_HOSTS = ['*']
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'api',
     'tinymce',
     'graphene_django',
+
 ]
 
 MIDDLEWARE = [

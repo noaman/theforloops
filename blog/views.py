@@ -27,3 +27,13 @@ def category_list(request,category,category_id):
     context={"postdata":allposts,"categoryname":category}
 
     return render(request, "categorylist.html",context)
+
+def tag_list(request,tag):
+    allposts=api.views.allPostsHomePage(request,tag=tag)
+    context={"postdata":allposts,"tagname":tag}
+    
+    # return JsonResponse(context)
+    return render(request, "tagslist.html",context)
+
+def about(request):
+    return render(request,"about.html")

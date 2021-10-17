@@ -39,7 +39,7 @@ class Query(graphene.ObjectType):
         PostType,
         search=graphene.String(),
         categoryID=graphene.Int(),
-        
+        tag=graphene.String(),
         first=graphene.Int(),
         skip=graphene.Int(),
         
@@ -53,6 +53,9 @@ class Query(graphene.ObjectType):
     post_by_slug = graphene.List(PostType, slug=graphene.String(required=True))
 
     post_by_category = graphene.List(PostType, categoryID=graphene.Int(required=True))
+
+   
+
     
     def resolve_post_by_category(self, info,categoryID, **kwargs):
         qs= Post.objects.filter(category__id=categoryID).all()
@@ -64,13 +67,15 @@ class Query(graphene.ObjectType):
     def resolve_post_by_slug(self, info,slug, **kwargs):
         return Post.objects.filter(slug=slug).all()
 
+  
     def resolve_all_categories(self, info, **kwargs):
         return Category.objects.all()
 
-    def resolve_all_posts(self, info,search=None, first=None, skip=None,orderby=None,categoryID=None,ordermode="asc",**kwargs):
+    def resolve_all_posts(self, info,search=None, first=None, skip=None,orderby=None,categoryID=None,tag=None,ordermode="asc",**kwargs):
         
         qs = Post.objects.all()
-
+        if(tag!=None):
+            qs=qs.filter(tags__name__in = [tag]).all()
         if(categoryID != None):
             qs=qs.filter(category=categoryID)
             
@@ -97,6 +102,8 @@ class Query(graphene.ObjectType):
 
     
     def resolve_post_by_id(self, info,post_id):
+        post=Post.objects.filter(id=post_id).get()
+        post.incrementViewCount()
         return Post.objects.filter(id=post_id).all()
 
 schema = graphene.Schema(query=Query)

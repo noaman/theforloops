@@ -25,7 +25,8 @@
                                 </a></span>
 					</h2>
                     <div class="card-text text-muted small"> 
-                        <span class="color5"><a href="/category/{{post.category.name}}" class="color5"><strong>{{post.category.name}}</strong></a>&nbsp;&middot;&nbsp;
+                 
+                        <span class="color5"><a href="/category/{{post.category.name}}/{{post.category.id}}" class="color5"><strong>{{post.category.name}}</strong></a>&nbsp;&middot;&nbsp;
                         <small class="text-muted">{{ post.createdAgo }} &nbsp;&middot;&nbsp;{{ post.readTime }} min read</small>
                         &nbsp;&middot;&nbsp; 
                      <small class="text-muted">{{post.claps|floatformat:"0"}} claps </small>&nbsp;&middot;&nbsp; <small class="text-muted">{{post.views|floatformat:"0"}} views</small></span>
@@ -80,7 +81,8 @@
 				</h6>
 				<p class="text-muted">
 					 {% comment %} {{post.author}} in  {% endcomment %}
-                     <span class="color5"><a href="/category/{{post.category.name}}" class="color5"><strong>{{post.category.name}}</strong></a>&nbsp;&middot;&nbsp;
+                   
+                     <span class="color5"><a href="/category/{{post.category.name}}/{{post.category.id}}" class="color5"><strong>{{post.category.name}}</strong></a>&nbsp;&middot;&nbsp;
                      <small class="text-muted"> &nbsp;{{ post.readTime }} min read</small>&nbsp;&middot;&nbsp; 
                      <small class="text-muted">{{post.claps|floatformat:"0"}} claps </small>&nbsp;&middot;&nbsp; <small class="text-muted">{{post.views|floatformat:"0"}} views</small></span>
 

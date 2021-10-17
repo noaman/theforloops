@@ -11,8 +11,10 @@ urlpatterns=[
     url(r'^post/(?P<id>.*)/(?P<slug>.*)/$', views.post_detail,name='post_detail'),
 
     
-    # path('about',views.about,name="about"),
+    path('about',views.about,name="about"),
     url(r'^category/(?P<category>.*)/(?P<category_id>.*)/$', views.category_list,name='category_list'),
     url(r'^category/(?P<category>.*)/$', views.category_list,name='category_list'),
+    url(r'^tag/(?P<tag>.*)/$', views.tag_list,name='tag_list'),
+
     url(r'^updateclaps/(?P<pid>.*)/$', views.update_claps,name='update_claps'),
-]
+]   

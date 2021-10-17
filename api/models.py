@@ -81,10 +81,11 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     claps = models.FloatField(default=1)
     views = models.FloatField(default=1)
-    tags = TaggableManager() 
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category')
+    
+    tags = TaggableManager(blank=True,) 
     status = models.CharField(max_length=15,choices=STATUS_CHOICES,default='published')
     read_time = models.IntegerField(default=0)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category')
     image = models.ImageField(upload_to='featured_image/%Y/%m/%d/',null=True) 
 
 
